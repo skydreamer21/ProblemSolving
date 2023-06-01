@@ -19,6 +19,7 @@ $$x_{n+1} = \frac{1}{2}(x_n + \frac{N}{x_n})$$
 - [뉴튼 법을 이용한 근사값 구하기](https://ntalbs.github.io/2014/newtons-method/)
 - [Best Square Root Method - Algorithm - Function (Precision VS Speed)](https://www.codeproject.com/Articles/69941/Best-Square-Root-Method-Algorithm-Function-Precisi)
 
+---
 
 ### 성능 요약
 

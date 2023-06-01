@@ -2,6 +2,15 @@
 
 [문제 링크](https://www.acmicpc.net/problem/20291) 
 
+## Study
+### substring & indexOf vs split
+`split`의 내부 동작이 더 큰 오버헤드를 가지고 있기 때문에 시간적인 측면이나 공간적인 측면에서 효율이 좋지 않다.
+- substring : 지정된 범위의 배열 복사
+- split : regex를 사용한 여러 `if` 문과 배열을 만들기 위해 내부적으로 `ArrayList`를 생성해서 요소들을 담고 반환하기 전 배열로 변환
+
+---
+
+
 ### 성능 요약
 
 메모리: 87968 KB, 시간: 820 ms

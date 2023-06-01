@@ -12,7 +12,8 @@ public class Main {
         
         N = Integer.parseInt(br.readLine());
         while (N-- > 0) {
-            addExt(br.readLine().split("\\.")[1]);
+            String file = br.readLine();
+            addExt(file.substring(file.indexOf('.') + 1));
         }
         
         files.keySet().stream()

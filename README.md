@@ -5,4 +5,5 @@
 
 
 ## Study
-- [Q13706 제곱근](https://github.com/skydreamer21/ProblemSolving/blob/main/%EB%B0%B1%EC%A4%80/Silver/13706.%E2%80%85%EC%A0%9C%EA%B3%B1%EA%B7%BC/README.md)
+- [Q13706 - 제곱근](https://github.com/skydreamer21/ProblemSolving/blob/main/%EB%B0%B1%EC%A4%80/Silver/13706.%E2%80%85%EC%A0%9C%EA%B3%B1%EA%B7%BC/README.md)
+- [Q20291 - 파일 정리](https://github.com/skydreamer21/ProblemSolving/blob/main/%EB%B0%B1%EC%A4%80/Silver/20291.%E2%80%85%ED%8C%8C%EC%9D%BC%E2%80%85%EC%A0%95%EB%A6%AC/README.md)

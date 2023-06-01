@@ -16,8 +16,8 @@ $$x_{n+1} = \frac{1}{2}(x_n + \frac{N}{x_n})$$
 - 정수일 경우에는 $i * i <= N$ 를 만족하는 i의 최댓값을 구하게 된다. 
 
 ### Reference
-[뉴튼 법을 이용한 근사값 구하기](https://ntalbs.github.io/2014/newtons-method/)
-[Best Square Root Method - Algorithm - Function (Precision VS Speed)](https://www.codeproject.com/Articles/69941/Best-Square-Root-Method-Algorithm-Function-Precisi)
+- [뉴튼 법을 이용한 근사값 구하기](https://ntalbs.github.io/2014/newtons-method/)
+- [Best Square Root Method - Algorithm - Function (Precision VS Speed)](https://www.codeproject.com/Articles/69941/Best-Square-Root-Method-Algorithm-Function-Precisi)
 
 
 ### 성능 요약

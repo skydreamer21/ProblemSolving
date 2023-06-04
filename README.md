@@ -7,6 +7,7 @@
 ## Questions
 - [Q2003 - 수들의 합](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/2003.%E2%80%85%EC%88%98%EB%93%A4%EC%9D%98%E2%80%85%ED%95%A9%E2%80%852)
 - [Q16953 - A -> B](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/16953.%E2%80%85A%E2%80%85%E2%86%92%E2%80%85B)
+- [Q14247 - 나무 자르기](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/14247.%E2%80%85%EB%82%98%EB%AC%B4%E2%80%85%EC%9E%90%EB%A5%B4%EA%B8%B0)
 
 
 ## Study

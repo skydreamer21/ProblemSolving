@@ -4,21 +4,7 @@ import java.util.StringTokenizer;
 
 public class Main {
     static int N;
-    static Pair[] pairs;
-    
-    static class Pair implements Comparable<Pair> {
-        int doc, interview;
-        
-        public Pair(int doc, int interview) {
-            this.doc = doc;
-            this.interview = interview;
-        }
-        
-        @Override
-        public int compareTo(Pair o) {
-            return this.doc - o.doc;
-        }
-    }
+    static int[] score;
     
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,19 +15,18 @@ public class Main {
         int T = Integer.parseInt(br.readLine());
         while (T-- > 0) {
             N = Integer.parseInt(br.readLine());
-            pairs = new Pair[N];
+            score = new int[N];
             for (int i = 0; i < N; i++) {
                 st = new StringTokenizer(br.readLine());
-                pairs[i] = new Pair(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
+                score[Integer.parseInt(st.nextToken())-1] = Integer.parseInt(st.nextToken());
             }
             
-            Arrays.sort(pairs);
             int answer = 0;
             int interviewMax = N + 1;
-            for (Pair pair : pairs) {
-                if (pair.interview < interviewMax) {
+            for (int interview : score) {
+                if (interview < interviewMax) {
                     answer++;
-                    interviewMax = pair.interview;
+                    interviewMax = interview;
                 }
             }
             

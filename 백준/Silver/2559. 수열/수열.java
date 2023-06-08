@@ -16,20 +16,15 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
         arr = new int[N];
         st = new StringTokenizer(br.readLine());
-        for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(st.nextToken());
+        arr[0] = Integer.parseInt(st.nextToken());
+        for (int i = 1; i < N; i++) {
+            arr[i] = Integer.parseInt(st.nextToken()) + arr[i - 1];
         }
         
-        int max = 0;
-        for (int i = 0; i < M; i++) {
-            max += arr[i];
-        }
+        int max = arr[M - 1];
         
-        int sum = max;
         for (int i = M; i < N; i++) {
-            sum -= arr[i - M];
-            sum += arr[i];
-            max = Math.max(max, sum);
+            max = Math.max(max, arr[i] - arr[i - M]);
         }
         
         sb.append(max);

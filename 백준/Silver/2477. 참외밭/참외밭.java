@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.StringTokenizer;
 import java.util.function.Predicate;
 
@@ -11,6 +9,8 @@ public class Main {
     static class Farm {
         Wall[] walls;
         private int cnt;
+        private int maxHorIdx, maxHor;
+        private int maxVerIdx, maxVer;
         
         public Farm() {
             walls = new Wall[6];
@@ -18,7 +18,19 @@ public class Main {
         }
         
         public void addWall(Wall wall) {
-            walls[cnt++] = wall;
+            walls[cnt] = wall;
+            if (isHorizontal(wall.dir)) {
+                if (wall.length > maxHor) {
+                    maxHor = wall.length;
+                    maxHorIdx = cnt;
+                }
+            } else {
+                if (wall.length > maxVer) {
+                    maxVer = wall.length;
+                    maxVerIdx = cnt;
+                }
+            }
+            cnt++;
         }
         
         public int getArea() {
@@ -26,15 +38,11 @@ public class Main {
         }
         
         private int getBigSquareArea() {
-            int horIdx = getMaxWallIdx(this::isHorizontal);
-            int verIdx = getMaxWallIdx(this::isVertical);
-            return walls[horIdx].length * walls[verIdx].length;
+            return walls[maxHorIdx].length * walls[maxVerIdx].length;
         }
         
         private int getSmallSquareArea() {
-            int horIdx = getMaxWallIdx(this::isHorizontal);
-            int verIdx = getMaxWallIdx(this::isVertical);
-            return getSmallAreaWallLength(horIdx) * getSmallAreaWallLength(verIdx);
+            return getSmallAreaWallLength(maxHorIdx) * getSmallAreaWallLength(maxVerIdx);
         }
         
         private int getSmallAreaWallLength(int maxLengthIdx) {
@@ -43,25 +51,8 @@ public class Main {
             return Math.abs(walls[prev].length - walls[next].length);
         }
         
-        private int getMaxWallIdx(Predicate<Integer> isTargetWall) {
-            int maxLength = -1;
-            int idx = -1;
-            
-            for (int i = 0; i < 6; i++) {
-                if (isTargetWall.test(walls[i].dir) && walls[i].length > maxLength) {
-                    maxLength = walls[i].length;
-                    idx = i;
-                }
-            }
-            return idx;
-        }
-        
         private boolean isHorizontal(int dir) {
             return dir == 1 || dir == 2;
-        }
-        
-        private boolean isVertical(int dir) {
-            return dir == 3 || dir == 4;
         }
     }
     

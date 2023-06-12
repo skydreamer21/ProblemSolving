@@ -25,6 +25,16 @@ public class Main {
             A = A == M ? 0 : A;
             B = B == N ? 0 : B;
             
+            if (N > M) {
+                int temp = M;
+                M = N;
+                N = temp;
+                
+                temp = A;
+                A = B;
+                B = temp;
+            }
+            
             int lcm = lcm(N, M);
             if (A == 0 && B == 0) {
                 sb.append(lcm).append("\n");

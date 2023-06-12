@@ -1,7 +1,6 @@
 import java.io.*;
 import java.util.StringTokenizer;
 
-// TODO: 시간 줄여보기
 public class Main {
     private static final int IMPOSSIBLE = -1;
     
@@ -36,28 +35,26 @@ public class Main {
                 B = temp;
             }
             
-            int lcm = lcm(M, N);
-            if (A == 0 && B == 0) {
-                sb.append(lcm).append("\n");
-                continue;
-            }
-            for (int i = A; i < lcm; i += M) {
-                if (i % N == B) {
-                    sb.append(i).append("\n");
-                    findAns = true;
-                    break;
-                }
-            }
-            
-            if (!findAns) {
-                sb.append(IMPOSSIBLE).append("\n");
-            }
+            sb.append(findAnswer()).append("\n");
         }
     
         bw.write(sb.toString());
         bw.flush();
         bw.close();
         br.close();
+    }
+    
+    private static int findAnswer() {
+        int lcm = lcm(M, N);
+        if (A == 0 && B == 0) {
+            return lcm;
+        }
+        for (int i = A; i < lcm; i += M) {
+            if (i % N == B) {
+                return i;
+            }
+        }
+        return IMPOSSIBLE;
     }
     
     private static int gcd(int a, int b) {

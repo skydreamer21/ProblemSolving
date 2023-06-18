@@ -4,16 +4,12 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 public class Main {
-    static final int A = 0;
-    static final int C = 1;
-    static final int G = 2;
-    static final int T = 3;
-    static final char[] convertTable = {'A', 'C', 'G', 'T'};
+    static Map<Character, Integer> charToIdx = new HashMap<>();
     
     static int N, M;
     static char[] input;
     static int[] condition; // A C G T
-    static Map<Character, Integer> countTable;
+    static int[] countTable;
     static int answer = 0;
     
     public static void main(String[] args) throws IOException {
@@ -22,6 +18,7 @@ public class Main {
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
         
+        initTable();
         st = new StringTokenizer(br.readLine());
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
@@ -32,17 +29,17 @@ public class Main {
             condition[i] = Integer.parseInt(st.nextToken());
         }
         
-        countTable = new HashMap<>();
+        countTable = new int[4];
         for (int i = 0; i < M; i++) {
-            add(input[i]);
+            countTable[charToIdx.get(input[i])]++;
         }
         if (check()) {
             answer++;
         }
         
         for (int i = M; i < N; i++) {
-            add(input[i]);
-            remove(input[i - M]);
+            countTable[charToIdx.get(input[i])]++;
+            countTable[charToIdx.get(input[i-M])]--;
             if (check()) {
                 answer++;
             }
@@ -56,30 +53,19 @@ public class Main {
         br.close();
     }
     
+    private static void initTable() {
+        charToIdx.put('A', 0);
+        charToIdx.put('C', 1);
+        charToIdx.put('G', 2);
+        charToIdx.put('T', 3);
+    }
+    
     public static boolean check() {
         for (int i = 0; i < 4; i++) {
-            if (get(convertTable[i]) < condition[i]) {
+            if (countTable[i] < condition[i]) {
                 return false;
             }
         }
         return true;
-    }
-    
-    public static int get(char c) {
-        if (!countTable.containsKey(c)) {
-            countTable.put(c, 0);
-        }
-        return countTable.get(c);
-    }
-    
-    public static void add(char c) {
-        if (!countTable.containsKey(c)) {
-            countTable.put(c, 0);
-        }
-        countTable.replace(c, countTable.get(c) + 1);
-    }
-    
-    public static void remove(char c) {
-        countTable.replace(c, countTable.get(c) - 1);
     }
 }

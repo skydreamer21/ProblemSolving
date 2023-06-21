@@ -9,6 +9,7 @@
 - [Q16953 - A -> B](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/16953.%E2%80%85A%E2%80%85%E2%86%92%E2%80%85B)
 - [Q14247 - 나무 자르기](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/14247.%E2%80%85%EB%82%98%EB%AC%B4%E2%80%85%EC%9E%90%EB%A5%B4%EA%B8%B0)
 - [Q6064 - 카잉 달력](https://github.com/skydreamer21/ProblemSolving/blob/main/%EB%B0%B1%EC%A4%80/Silver/6064.%E2%80%85%EC%B9%B4%EC%9E%89%E2%80%85%EB%8B%AC%EB%A0%A5/README.md)
+- [Q7571 - 점 모으기](https://github.com/skydreamer21/ProblemSolving/tree/main/%EB%B0%B1%EC%A4%80/Silver/7571.%E2%80%85%EC%A0%90%E2%80%85%EB%AA%A8%EC%9C%BC%EA%B8%B0)
 
 
 ## Study

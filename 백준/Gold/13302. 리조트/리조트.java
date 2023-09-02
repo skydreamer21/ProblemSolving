@@ -31,7 +31,7 @@ public class Main {
         M = Integer.parseInt(st.nextToken());
 
         isVisitDay = new boolean[N+1];
-        dp = new int[N+1][40];
+        dp = new int[N+1][41];
         for (int i=0; i<=N; i++) {
             Arrays.fill(dp[i], NOT_YET);
         }

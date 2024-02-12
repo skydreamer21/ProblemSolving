@@ -52,29 +52,22 @@ public class Main {
         }
 
         public int get(int x, int y) {
-            int[] convertedPos = convert(x, y);
-            int row = convertedPos[0];
-            int col = convertedPos[1];
+            int lineIdx = x * BOARD_SIZE + y;
+            int row = lineIdx / MASK_SIZE;
+            int col = MASK_SIZE - 1 - (lineIdx % MASK_SIZE);
             return (int)((board[row] >> (col << 2)) & FOUR_BITS_ON);
         }
 
         public void set(int x, int y, int value) {
-            int[] convertedPos = convert(x, y);
-            int row = convertedPos[0];
-            int col = convertedPos[1];
+            int lineIdx = x * BOARD_SIZE + y;
+            int row = lineIdx / MASK_SIZE;
+            int col = MASK_SIZE - 1 - (lineIdx % MASK_SIZE);
             int pushBits = col << 2;
             board[row] = (board[row] & ~(FOUR_BITS_ON << (pushBits))) | ((long)value << (pushBits));
         }
 
         public void setEmpty(int x, int y) {
             set(x, y, EMPTY);
-        }
-
-        private int[] convert(int x, int y) {
-            int lineIdx = x * BOARD_SIZE + y;
-            int row = lineIdx / MASK_SIZE;
-            int col = MASK_SIZE - 1 - (lineIdx % MASK_SIZE);
-            return new int[]{row, col};
         }
 
         public boolean isPossibleToSet(int x, int y, int value) {

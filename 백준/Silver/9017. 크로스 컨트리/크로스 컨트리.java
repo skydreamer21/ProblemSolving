@@ -34,12 +34,7 @@ public class Main {
                 rankOfFifth = rank;
             }
         }
-
-        public boolean hasCorrectTeam() {
-            return cnt == 6;
-        }
     }
-    
     static class TeamManager {
 
         Map<Integer, Team> teamMap;
@@ -63,7 +58,6 @@ public class Main {
             for (Map.Entry<Integer, Team> teamEntry : teamMap.entrySet()) {
                 Team team = teamEntry.getValue();
                 int teamId = teamEntry.getKey();
-                if (!team.hasCorrectTeam()) continue;
                 if (team.score < minScore) {
 //                    System.out.printf("%d팀의 점수가 최저점(%d)으로 이긴 팀이 바뀌었습니다 (fifth : %d) \n", teamId, team.score, team.rankOfFifth);
                     winTeam = teamId;
@@ -117,7 +111,6 @@ public class Main {
             }
             sb.append(teamManager.getWinTeam()).append("\n");
         }
-
 
         bw.write(sb.toString());
         bw.flush();

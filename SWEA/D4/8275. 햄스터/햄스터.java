@@ -94,7 +94,8 @@ public class Solution {
         public State copy() {
             State copied = new State();
             copied.state = Arrays.copyOf(this.state, this.state.length);
-            copied.makeMetaData();
+            copied.lineIdx = this.lineIdx;
+            copied.total = this.total;
             return copied;
         }
     }

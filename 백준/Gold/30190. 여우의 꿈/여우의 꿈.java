@@ -35,19 +35,13 @@ public class Main {
 //            System.out.printf("%d번째 원판 배치\n", i);
             if (cur == expects[i]) continue;
 
-            Set<Integer> set = init();
-            set.remove(cur);
-            set.remove(expects[i]);
-
-            // next
-            cur = set.iterator().next();
+            cur = 6 - cur - expects[i];
             ans = (ans + moveN(i-1)) % DIV;
 //            System.out.printf("%d번째 원판 배치 후 ans : %d\n", i, ans);
 
         }
 
         sb.append(ans);
-
 
         bw.write(sb.toString());
         bw.flush();
@@ -68,14 +62,6 @@ public class Main {
         }
 //        System.out.printf("[OUT - all] n : %d, dp[%d] = %d\n", n, n, moveDP[n]);
         return moveDP[n];
-    }
-
-    public static Set<Integer> init() {
-        Set<Integer> set = new HashSet<>();
-        set.add(1);
-        set.add(2);
-        set.add(3);
-        return set;
     }
 
 }

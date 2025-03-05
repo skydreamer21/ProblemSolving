@@ -54,6 +54,7 @@ public class Main {
 
         for (int i = 1; i<=N/2; i++) {
             Number[] sums = new Number[N-i+1];
+            boolean[] visited = new boolean[N-i+1];
             for (int j=0; j<N-i+1; j++) {
                 sums[j] = new Number(j, sumNFrom(j+1, i));
             }
@@ -64,12 +65,14 @@ public class Main {
 
                 for (int k=1; k<=i; k++) {
 //                    System.out.printf("(%d, %d, %d)\n", i, j, k);
-                    if (j - k < 0) break;
+                    if (j - k < 0 || visited[j-k]) break;
                     diff = sums[j].diff(sums[j-k]);
                     if (diff > min) break;
                     if (!sums[j].isComparable(sums[j-k], i)) continue;
 //                    System.out.printf("cal (%d, %d, %d)\n", i, j, k);
                     tempMin = Math.min(diff, tempMin);
+                    visited[j-k] = true;
+                    break;
                 }
             }
 //            System.out.printf("길이 : %d, 최솟값 : %d\n", i, tempMin);

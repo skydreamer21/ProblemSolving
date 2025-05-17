@@ -25,9 +25,10 @@ public class Main {
         for (int i = 1; i<N; i++) {
             int end = N - i;
             for (int j=1; j<=end; j++) {
-                dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
                 if (str[i-1] == str[N-j]) {
-                    dp[i][j] = Math.max(dp[i][j], dp[i-1][j-1] + 1);
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
                 }
             }
             int rowMin = Math.min(N - (2*dp[i][end]), N - 1 - (2*dp[i][end-1]));

@@ -15,15 +15,11 @@ import java.util.StringTokenizer;
 public class Main {
 
     static final int[][] DIR = { { -1, 0 }, { 0, 1 }, { 0, -1 }, { 1, 0 }, { -1, 1 }, { 1, -1 } };
-    static final char WALL = '-';
-    static final char EMPTY = 'X';
-    static final char COLOR_A = 'a';
-    static final char COLOR_B = 'b';
-    static final char IMPOSSIBLE = '.';
-    static final Set<Character> PALATE = new HashSet<>(Arrays.asList(COLOR_A, COLOR_B));
+    static final int  WALL = 0;
+    static final int EMPTY = 2;
 
     static int N;
-    static char[][] map;
+    static int[][] map;
 
     static class Pair {
 
@@ -43,14 +39,20 @@ public class Main {
         StringTokenizer st;
 
         N = Integer.parseInt(br.readLine());
-        map = new char[N][N];
+        map = new int[N][N];
 
         for (int i = 0; i < N; i++) {
-            map[i] = br.readLine().toCharArray();
+            char[] tmp = br.readLine().toCharArray();
+            for (int j=0; j<N; j++) {
+                if (tmp[j] == '-') {
+                    map[i][j] = WALL;
+                } else if (tmp[j] == 'X') {
+                    map[i][j] = EMPTY;
+                }
+            }
         }
 
         // bfs 탐색
-
         int max = 0;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
@@ -75,7 +77,7 @@ public class Main {
         boolean needThree = false;
 
         q.add(new Pair(x, y));
-        map[x][y] = COLOR_A;
+        map[x][y] = 1;
         int cnt = 0;
 
         while (!q.isEmpty()) {
@@ -85,20 +87,17 @@ public class Main {
             for (int[] d : DIR) {
                 int nextX = now.x + d[0];
                 int nextY = now.y + d[1];
-                if (isInRange(nextX, nextY)  && map[nextX][nextY] == EMPTY) {
-                    q.add(new Pair(nextX, nextY));
-                    char color = COLOR_A;
-                    if (!needThree) {
-                        color = findColor(nextX, nextY);
-                        needThree = (color == IMPOSSIBLE);
+                if (isInRange(nextX, nextY)  && map[nextX][nextY] != WALL) {
+                    if (map[nextX][nextY] == EMPTY) {
+                        map[nextX][nextY] = -map[now.x][now.y];
+                        q.add(new Pair(nextX, nextY));
+                    } else if (map[now.x][now.y] == map[nextX][nextY]) {
+                        needThree = true;
                     }
-//                    System.out.printf("next : (%d, %d), color : %c\n", nextX, nextY, color);
-                    map[nextX][nextY] = color;
 
                 }
             }
         }
-
 //        System.out.printf("cnt : %d\n", cnt);
 
         if (needThree) {
@@ -108,22 +107,6 @@ public class Main {
         } else {
             return 2;
         }
-    }
-
-    static public char findColor(int x, int y) {
-        int availables = 3;
-
-        for (int i = 0; i<6; i++) {
-            int nextX = x + DIR[i][0];
-            int nextY = y + DIR[i][1];
-            if (isInRange(nextX, nextY) && PALATE.contains(map[nextX][nextY])) {
-                int c = map[nextX][nextY] - 'A';
-                availables &= (~(1 << c));
-            }
-        }
-        if (availables == 0) return IMPOSSIBLE;
-        else if (availables == 2) return COLOR_B;
-        else return COLOR_A;
     }
 
     static public boolean isInRange(int x, int y) {

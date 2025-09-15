@@ -36,13 +36,11 @@ class Solution {
         Index index;
         String target;
         List<Integer> result;
-        int now;
         int len;
         
         public Zipper(String target) {
             this.index = new Index();
             this.target = target;
-            now = 0;
             len = target.length();
             result = new ArrayList<>();
         }
